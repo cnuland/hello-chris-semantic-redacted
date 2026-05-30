@@ -1,0 +1,100 @@
+{"text": "What is the capital of France?", "label": "PUBLIC"}
+{"text": "Explain how photosynthesis works", "label": "PUBLIC"}
+{"text": "Write a Python function to sort a list", "label": "PUBLIC"}
+{"text": "What are the differences between REST and GraphQL?", "label": "PUBLIC"}
+{"text": "Summarize the history of the Roman Empire", "label": "PUBLIC"}
+{"text": "How does TCP three-way handshake work?", "label": "PUBLIC"}
+{"text": "Translate 'hello world' into Spanish", "label": "PUBLIC"}
+{"text": "What is the time complexity of quicksort?", "label": "PUBLIC"}
+{"text": "Explain the CAP theorem in distributed systems", "label": "PUBLIC"}
+{"text": "Write a regex to validate email addresses", "label": "PUBLIC"}
+{"text": "What are the SOLID principles in software engineering?", "label": "PUBLIC"}
+{"text": "How do neural networks learn through backpropagation?", "label": "PUBLIC"}
+{"text": "What is the difference between a stack and a queue?", "label": "PUBLIC"}
+{"text": "Explain how garbage collection works in Java", "label": "PUBLIC"}
+{"text": "Write a SQL query to find duplicate rows in a table", "label": "PUBLIC"}
+{"text": "What is the difference between HTTP and HTTPS?", "label": "PUBLIC"}
+{"text": "Explain the concept of microservices architecture", "label": "PUBLIC"}
+{"text": "How does DNS resolution work?", "label": "PUBLIC"}
+{"text": "What is containerization and how does Docker work?", "label": "PUBLIC"}
+{"text": "Explain the difference between OAuth and OIDC", "label": "PUBLIC"}
+{"text": "How do I deploy to the staging cluster on ironman.cjlabs.dev?", "label": "INTERNAL"}
+{"text": "What namespace does the semantic router run in?", "label": "INTERNAL"}
+{"text": "Can you review the architecture of Project Phoenix?", "label": "INTERNAL"}
+{"text": "How do I configure the internal CI pipeline for sprint deployments?", "label": "INTERNAL"}
+{"text": "What's the current state of the homelab-maas namespace?", "label": "INTERNAL"}
+{"text": "Explain the data flow in our openai-proxy service", "label": "INTERNAL"}
+{"text": "How should we structure the Jira tickets for the Q3 migration?", "label": "INTERNAL"}
+{"text": "What are the resource limits for pods on worker-01?", "label": "INTERNAL"}
+{"text": "Debug the ollama-qwen36 deployment — it's not pulling the model", "label": "INTERNAL"}
+{"text": "Review the network topology between home-assistant and homelab-maas namespaces", "label": "INTERNAL"}
+{"text": "What does the internal SLA say about model response latency?", "label": "INTERNAL"}
+{"text": "How do we handle secrets rotation for the Gemini API key?", "label": "INTERNAL"}
+{"text": "What is the current CPU utilization across our staging cluster?", "label": "INTERNAL"}
+{"text": "Can you check the build pipeline status for the redaction-service?", "label": "INTERNAL"}
+{"text": "How do we configure Argo CD to sync the semantic-redacted namespace?", "label": "INTERNAL"}
+{"text": "What are the current PVC storage claims on worker-02?", "label": "INTERNAL"}
+{"text": "Review the Grafana dashboard for model inference latency", "label": "INTERNAL"}
+{"text": "How do we set up a new BuildConfig for the guardrails service?", "label": "INTERNAL"}
+{"text": "What's the network policy between the voice namespace and homelab-maas?", "label": "INTERNAL"}
+{"text": "List all CronJobs running in the semantic-redacted namespace", "label": "INTERNAL"}
+{"text": "Draft a performance improvement plan for Sarah Chen in engineering", "label": "CONFIDENTIAL"}
+{"text": "What is the salary range for senior engineers on the platform team?", "label": "CONFIDENTIAL"}
+{"text": "Summarize the termination discussion from yesterday's HR meeting", "label": "CONFIDENTIAL"}
+{"text": "Review the contract terms we offered Acme Corp for the enterprise deal", "label": "CONFIDENTIAL"}
+{"text": "What were the key takeaways from the board strategy session?", "label": "CONFIDENTIAL"}
+{"text": "Draft an email to John Martinez about his promotion timeline", "label": "CONFIDENTIAL"}
+{"text": "Compare the vendor proposals from DataDog and New Relic with our pricing", "label": "CONFIDENTIAL"}
+{"text": "What is customer ABC-1234's current usage and billing tier?", "label": "CONFIDENTIAL"}
+{"text": "Prepare talking points for the Q3 headcount planning meeting", "label": "CONFIDENTIAL"}
+{"text": "Review the non-compete clause in the acquisition term sheet", "label": "CONFIDENTIAL"}
+{"text": "Draft a response to the employee complaint filed by Jane Doe", "label": "CONFIDENTIAL"}
+{"text": "What's our customer churn rate by segment for the last quarter?", "label": "CONFIDENTIAL"}
+{"text": "Prepare the exit interview summary for the departing VP of Sales", "label": "CONFIDENTIAL"}
+{"text": "Review the stock option vesting schedule for the engineering team", "label": "CONFIDENTIAL"}
+{"text": "What are the equity grant details for the Series C round?", "label": "CONFIDENTIAL"}
+{"text": "Draft the NDA terms for the potential partnership with TechCo", "label": "CONFIDENTIAL"}
+{"text": "Analyze the competitor pricing data from the market research report", "label": "CONFIDENTIAL"}
+{"text": "What is the severance package offered to laid-off employees?", "label": "CONFIDENTIAL"}
+{"text": "Summarize the disciplinary action taken against the marketing manager", "label": "CONFIDENTIAL"}
+{"text": "Review the M&A due diligence report for the target company", "label": "CONFIDENTIAL"}
+{"text": "Analyze our Q3 2026 earnings before the public filing deadline", "label": "REGULATED"}
+{"text": "Review the patient records for clinical trial participant 7829", "label": "REGULATED"}
+{"text": "What did the SOX audit finding say about our financial controls?", "label": "REGULATED"}
+{"text": "Process the GDPR deletion request for user account EU-2024-8891", "label": "REGULATED"}
+{"text": "Review the credit card transaction logs for PCI compliance", "label": "REGULATED"}
+{"text": "Draft the SEC 10-K filing summary for fiscal year 2026", "label": "REGULATED"}
+{"text": "What are the HIPAA implications of storing patient data in our cluster?", "label": "REGULATED"}
+{"text": "Analyze the insider trading risk from the pre-earnings data leak", "label": "REGULATED"}
+{"text": "Review the data processing agreement for GDPR Article 28 compliance", "label": "REGULATED"}
+{"text": "What personal data do we hold on EU residents and what's our lawful basis?", "label": "REGULATED"}
+{"text": "Prepare the quarterly financial consolidation report for the audit committee", "label": "REGULATED"}
+{"text": "Review the sanctions screening results for the new vendor onboarding", "label": "REGULATED"}
+{"text": "Generate the SOX compliance checklist for our cloud infrastructure", "label": "REGULATED"}
+{"text": "What patient prescription data is stored in our analytics pipeline?", "label": "REGULATED"}
+{"text": "Review the clinical study results before submitting to the FDA", "label": "REGULATED"}
+{"text": "Prepare the regulatory filing for the new financial product launch", "label": "REGULATED"}
+{"text": "What medical records are accessible through the patient portal API?", "label": "REGULATED"}
+{"text": "Analyze the PCI-DSS compliance gaps identified in the latest audit", "label": "REGULATED"}
+{"text": "Draft the GDPR Data Protection Impact Assessment for the new feature", "label": "REGULATED"}
+{"text": "Review the audit findings from the external financial compliance review", "label": "REGULATED"}
+{"text": "Here is the SSH private key for the production bastion host", "label": "NEVER_EGRESS"}
+{"text": "The API key for our payment gateway is sk_live_EXAMPLE_KEY_00000000000000", "label": "NEVER_EGRESS"}
+{"text": "We found a critical RCE vulnerability in the auth service — CVE pending", "label": "NEVER_EGRESS"}
+{"text": "Review the penetration test report from last week's red team exercise", "label": "NEVER_EGRESS"}
+{"text": "The database root password is stored in vault at secret/prod/db-creds", "label": "NEVER_EGRESS"}
+{"text": "Analyze this memory dump from the compromised worker node", "label": "NEVER_EGRESS"}
+{"text": "The bearer token for the admin API is eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9", "label": "NEVER_EGRESS"}
+{"text": "Review the incident response log for the data breach detected at 3am", "label": "NEVER_EGRESS"}
+{"text": "What customer data was exposed in the S3 bucket misconfiguration?", "label": "NEVER_EGRESS"}
+{"text": "Here is the TLS certificate chain for *.production.internal", "label": "NEVER_EGRESS"}
+{"text": "Analyze the malware sample extracted from the compromised container", "label": "NEVER_EGRESS"}
+{"text": "The OAuth client secret for our SSO integration is 7f3a9b2c-d4e5-6f78", "label": "NEVER_EGRESS"}
+{"text": "Review the forensic analysis of the SQL injection attack on the user database", "label": "NEVER_EGRESS"}
+{"text": "Our AWS access key AKIAIOSFODNN7EXAMPLE was leaked in a public repo", "label": "NEVER_EGRESS"}
+{"text": "Analyze the zero-day exploit targeting our authentication middleware", "label": "NEVER_EGRESS"}
+{"text": "The security scan found a backdoor in the container image", "label": "NEVER_EGRESS"}
+{"text": "Review the pentest findings showing credential stuffing vulnerabilities", "label": "NEVER_EGRESS"}
+{"text": "Assess the attack vector used in the ransomware incident last week", "label": "NEVER_EGRESS"}
+{"text": "Document the rootkit removal procedure for the compromised host", "label": "NEVER_EGRESS"}
+{"text": "The threat assessment identified an active exploit targeting our VPN gateway", "label": "NEVER_EGRESS"}

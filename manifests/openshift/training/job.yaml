@@ -1,0 +1,68 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sensitivity-training
+  namespace: semantic-redacted
+  labels:
+    app: sensitivity-training
+    app.kubernetes.io/name: sensitivity-training
+    app.kubernetes.io/component: training
+    app.kubernetes.io/part-of: semantic-redacted
+    app.kubernetes.io/managed-by: kubectl
+spec:
+  backoffLimit: 2
+  template:
+    metadata:
+      labels:
+        app: sensitivity-training
+        app.kubernetes.io/name: sensitivity-training
+        app.kubernetes.io/component: training
+        app.kubernetes.io/part-of: semantic-redacted
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: trainer
+          image: image-registry.openshift-image-registry.svc:5000/semantic-redacted/sensitivity-training:latest
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop:
+                - ALL
+          command:
+            - python
+            - "-m"
+            - src.training.pipeline
+            - configs/training.yaml
+            - configs/sdg.yaml
+            - data/sensitivity-anchors/anchors.jsonl
+          resources:
+            requests:
+              cpu: "4"
+              memory: 8Gi
+            limits:
+              cpu: "4"
+              memory: 8Gi
+          volumeMounts:
+            - name: model-output
+              mountPath: /app/models
+      volumes:
+        - name: model-output
+          persistentVolumeClaim:
+            claimName: sensitivity-model-pvc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sensitivity-model-pvc
+  namespace: semantic-redacted
+  labels:
+    app.kubernetes.io/part-of: semantic-redacted
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi

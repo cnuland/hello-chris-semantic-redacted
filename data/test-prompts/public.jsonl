@@ -1,0 +1,25 @@
+{"text": "What programming languages are best for web development?", "expected_label": "PUBLIC"}
+{"text": "How does garbage collection work in Java?", "expected_label": "PUBLIC"}
+{"text": "Explain the difference between a stack and a queue", "expected_label": "PUBLIC"}
+{"text": "What is Kubernetes and why is it used for container orchestration?", "expected_label": "PUBLIC"}
+{"text": "Describe the Model-View-Controller design pattern", "expected_label": "PUBLIC"}
+{"text": "What are the key features of Python 3.12?", "expected_label": "PUBLIC"}
+{"text": "How do you implement binary search in C++?", "expected_label": "PUBLIC"}
+{"text": "What is the difference between symmetric and asymmetric encryption?", "expected_label": "PUBLIC"}
+{"text": "What are the benefits of using a message queue like RabbitMQ or Kafka?", "expected_label": "PUBLIC"}
+{"text": "Explain how a blockchain consensus mechanism works", "expected_label": "PUBLIC"}
+{"text": "What is the difference between monolithic and microservices architecture?", "expected_label": "PUBLIC"}
+{"text": "How do load balancers distribute traffic across servers?", "expected_label": "PUBLIC"}
+{"text": "Write a Python script that reads a CSV file and calculates column averages", "expected_label": "PUBLIC"}
+{"text": "What is eventual consistency in distributed databases?", "expected_label": "PUBLIC"}
+{"text": "Explain the OWASP Top 10 web application security risks", "expected_label": "PUBLIC"}
+{"text": "How does TLS 1.3 differ from TLS 1.2?", "expected_label": "PUBLIC"}
+{"text": "What are Kubernetes Operators and when should you use them?", "expected_label": "PUBLIC"}
+{"text": "Explain how Git branching strategies like GitFlow work", "expected_label": "PUBLIC"}
+{"text": "What is infrastructure as code and how does Terraform implement it?", "expected_label": "PUBLIC"}
+{"text": "Describe the differences between SQL and NoSQL databases", "expected_label": "PUBLIC"}
+{"text": "How does container networking work in general?", "expected_label": "PUBLIC"}
+{"text": "What is a service mesh and why would you deploy one?", "expected_label": "PUBLIC"}
+{"text": "Explain the publish-subscribe pattern in event-driven architecture", "expected_label": "PUBLIC"}
+{"text": "What are OpenShift Routes and how do they compare to Kubernetes Ingress?", "expected_label": "PUBLIC"}
+{"text": "How does rate limiting work in API gateway design?", "expected_label": "PUBLIC"}

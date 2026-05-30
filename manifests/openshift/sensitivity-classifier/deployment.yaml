@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sensitivity-classifier
+  namespace: semantic-redacted
+  labels:
+    app: sensitivity-classifier
+    app.kubernetes.io/name: sensitivity-classifier
+    app.kubernetes.io/component: classifier
+    app.kubernetes.io/part-of: semantic-redacted
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: sensitivity-classifier
+  template:
+    metadata:
+      labels:
+        app: sensitivity-classifier
+        app.kubernetes.io/name: sensitivity-classifier
+        app.kubernetes.io/component: classifier
+        app.kubernetes.io/part-of: semantic-redacted
+    spec:
+      serviceAccountName: sensitivity-classifier
+      automountServiceAccountToken: false
+      containers:
+        - name: sensitivity-classifier
+          image: image-registry.openshift-image-registry.svc:5000/semantic-redacted/sensitivity-classifier:latest
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop:
+                - ALL
+          env:
+            - name: TRANSFORMERS_OFFLINE
+              value: "1"
+            - name: HF_HUB_OFFLINE
+              value: "1"
+          ports:
+            - containerPort: 8002
+              protocol: TCP
+              name: http
+          resources:
+            requests:
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 2Gi
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8002
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8002
+            initialDelaySeconds: 60
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3

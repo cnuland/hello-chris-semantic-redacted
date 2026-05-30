@@ -1,0 +1,25 @@
+{"text": "Calculate the EBITDA margin trend for the last four fiscal quarters", "expected_label": "REGULATED"}
+{"text": "A patient with ID MRN-44821 needs their prescription history reviewed for the audit", "expected_label": "REGULATED"}
+{"text": "Verify that all cardholder data in the transactions table is masked per PCI-DSS requirements", "expected_label": "REGULATED"}
+{"text": "Generate the annual SOX compliance checklist for the IT general controls review", "expected_label": "REGULATED"}
+{"text": "We received a GDPR subject access request from a user in Germany, compile their data", "expected_label": "REGULATED"}
+{"text": "Summarize the SEC comment letter responses before the 10-Q amendment deadline", "expected_label": "REGULATED"}
+{"text": "Review the clinical trial adverse event reports for regulatory submission to the FDA", "expected_label": "REGULATED"}
+{"text": "Prepare the revenue recognition schedule for the external auditors under ASC 606", "expected_label": "REGULATED"}
+{"text": "Extract all EU resident email addresses from the marketing database for GDPR right-to-erasure processing", "expected_label": "REGULATED"}
+{"text": "Prepare the quarterly SOX 404 management assessment of internal controls over financial reporting", "expected_label": "REGULATED"}
+{"text": "A patient at facility 12 reported an adverse drug reaction; file the MedWatch report with the FDA", "expected_label": "REGULATED"}
+{"text": "Validate that the payment processing system truncates the PAN to the last four digits in all log files", "expected_label": "REGULATED"}
+{"text": "Compile the list of material weaknesses identified during the annual SOX audit for the audit committee", "expected_label": "REGULATED"}
+{"text": "Process the GDPR data portability request and export user profile data in machine-readable format", "expected_label": "REGULATED"}
+{"text": "Draft the 8-K filing for the SEC regarding the material event disclosed this morning", "expected_label": "REGULATED"}
+{"text": "Review the PHI access logs to determine whether the nurse accessed patient records outside her department", "expected_label": "REGULATED"}
+{"text": "What is our current PCI-DSS self-assessment questionnaire status and when does certification expire?", "expected_label": "REGULATED"}
+{"text": "Prepare the HIPAA breach notification letter template for affected patients", "expected_label": "REGULATED"}
+{"text": "Calculate the deferred revenue balance and ensure recognition complies with ASC 606 for the annual report", "expected_label": "REGULATED"}
+{"text": "Generate the GDPR Records of Processing Activities for all data controllers in the EU subsidiary", "expected_label": "REGULATED"}
+{"text": "Review the SOX IT general controls testing results for the ERP system change management process", "expected_label": "REGULATED"}
+{"text": "Compile the Sarbanes-Oxley Section 302 certification for the CFO to sign", "expected_label": "REGULATED"}
+{"text": "What is the HIPAA minimum necessary standard for sharing patient lab results with the referring physician?", "expected_label": "REGULATED"}
+{"text": "Audit the tokenization vault to confirm no raw credit card numbers are stored outside the PCI-DSS cardholder data environment", "expected_label": "REGULATED"}
+{"text": "Prepare the annual anti-money laundering suspicious activity report for FinCEN filing", "expected_label": "REGULATED"}

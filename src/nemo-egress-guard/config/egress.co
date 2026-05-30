@@ -1,0 +1,42 @@
+define flow egress pii verification
+  """Verify no PII remains after redaction."""
+  $has_residual_pii = execute check_residual_pii(text=$last_user_message)
+  if $has_residual_pii
+    bot refuse egress pii
+    stop
+
+define flow egress secret scan
+  """Verify no secrets remain after redaction."""
+  $has_secrets = execute check_secrets(text=$last_user_message)
+  if $has_secrets
+    bot refuse egress secret
+    stop
+
+define flow egress sensitivity check
+  """Verify content sensitivity is appropriate for egress."""
+  $sensitivity = $context.get("sensitivity_level", "PUBLIC")
+  if $sensitivity == "NEVER_EGRESS"
+    bot refuse egress sensitivity
+    stop
+  if $sensitivity == "REGULATED"
+    bot refuse egress sensitivity
+    stop
+
+define flow egress placeholder integrity
+  """Verify placeholder substitution is consistent."""
+  $integrity_ok = execute verify_placeholder_integrity(text=$last_user_message)
+  if not $integrity_ok
+    bot refuse egress integrity
+    stop
+
+define bot refuse egress pii
+  "BLOCKED: Residual PII detected in redacted content. Content must not leave the cluster."
+
+define bot refuse egress secret
+  "BLOCKED: Secret or credential material detected in redacted content. Content must not leave the cluster."
+
+define bot refuse egress sensitivity
+  "BLOCKED: Content sensitivity level prohibits egress."
+
+define bot refuse egress integrity
+  "BLOCKED: Placeholder integrity check failed. Redaction may be incomplete."

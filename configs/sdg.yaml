@@ -1,0 +1,21 @@
+# Synthetic Data Generation configuration
+# Used by src/training/sdg_generator.py
+
+sdg:
+  endpoint: "https://kimi-k2-6-kserve-workload-svc.prelude-maas.svc:8000/v1/chat/completions"
+  model: "kimi-k2-6"
+  temperature: 0.8
+  max_tokens: 200
+  examples_per_tier: 100
+  request_delay: 0.5
+  timeout: 30
+  verify_ssl: false
+  seed_path: "data/sensitivity-anchors/anchors.jsonl"
+  output_path: "/app/models/data/train.jsonl"
+  strategies:
+    - paraphrase
+    - domain_transfer
+    - boundary
+    - hard_negative
+    - real_world
+    - perturbation

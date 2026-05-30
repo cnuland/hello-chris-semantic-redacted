@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redaction-service
+  namespace: semantic-redacted
+  labels:
+    app: redaction-service
+    role: egress-gateway
+    app.kubernetes.io/name: redaction-service
+    app.kubernetes.io/component: redaction
+    app.kubernetes.io/part-of: semantic-redacted
+    app.kubernetes.io/managed-by: kubectl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redaction-service
+      role: egress-gateway
+  template:
+    metadata:
+      labels:
+        app: redaction-service
+        role: egress-gateway
+        app.kubernetes.io/name: redaction-service
+        app.kubernetes.io/component: redaction
+        app.kubernetes.io/part-of: semantic-redacted
+    spec:
+      serviceAccountName: redaction-service
+      automountServiceAccountToken: false
+      containers:
+        - name: redaction-service
+          image: image-registry.openshift-image-registry.svc:5000/semantic-redacted/redaction-service:latest
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop:
+                - ALL
+          ports:
+            - containerPort: 8000
+              protocol: TCP
+              name: http
+          env:
+            - name: GEMINI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: redaction-service-secret
+                  key: GEMINI_API_KEY
+          volumeMounts:
+            - name: config
+              mountPath: /config
+              readOnly: true
+          resources:
+            requests:
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 2Gi
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+      volumes:
+        - name: config
+          configMap:
+            name: redaction-service-config

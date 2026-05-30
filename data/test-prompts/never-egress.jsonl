@@ -1,0 +1,25 @@
+{"text": "Rotate the production database credentials and store the new password in vault", "expected_label": "NEVER_EGRESS"}
+{"text": "Our WAF detected a SQL injection attempt against the auth endpoint, analyze the payload", "expected_label": "NEVER_EGRESS"}
+{"text": "The security scanner flagged a critical CVE in our container base image, assess the blast radius", "expected_label": "NEVER_EGRESS"}
+{"text": "Here are the AWS access keys for the staging account: AKIAIOSFODNN7EXAMPLE", "expected_label": "NEVER_EGRESS"}
+{"text": "Decode this JWT from the compromised session and identify what scopes were granted", "expected_label": "NEVER_EGRESS"}
+{"text": "Attach the forensic disk image from the breached server for analysis", "expected_label": "NEVER_EGRESS"}
+{"text": "We need to revoke the TLS certificate for api.prod.internal after the key was leaked", "expected_label": "NEVER_EGRESS"}
+{"text": "Run the SAST results against the code that contains the hardcoded bearer token", "expected_label": "NEVER_EGRESS"}
+{"text": "The Kubernetes service account token for the production cluster admin is eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJrdWJlcm5ldGVz", "expected_label": "NEVER_EGRESS"}
+{"text": "Analyze the network capture from the exfiltration attempt on the production database", "expected_label": "NEVER_EGRESS"}
+{"text": "The HashiCorp Vault unseal key shard 3 of 5 is: d3Jvbmdfa2V5X2V4YW1wbGU=", "expected_label": "NEVER_EGRESS"}
+{"text": "Review the SIEM alert correlating lateral movement between compromised hosts in the DMZ", "expected_label": "NEVER_EGRESS"}
+{"text": "Our private GPG signing key for the release pipeline was committed to a public branch", "expected_label": "NEVER_EGRESS"}
+{"text": "The intrusion detection system flagged a reverse shell callback from pod presidio-analyzer-7b8c9", "expected_label": "NEVER_EGRESS"}
+{"text": "Document the indicators of compromise from the supply chain attack on our npm dependency", "expected_label": "NEVER_EGRESS"}
+{"text": "The LDAP bind password for the Active Directory service account is P@ssw0rd!Pr0d2026", "expected_label": "NEVER_EGRESS"}
+{"text": "Perform a post-mortem on the privilege escalation exploit that gave the attacker cluster-admin", "expected_label": "NEVER_EGRESS"}
+{"text": "Extract the encryption keys from the etcd backup for the disaster recovery test", "expected_label": "NEVER_EGRESS"}
+{"text": "Analyze the C2 beacon traffic pattern observed in the compromised container's network logs", "expected_label": "NEVER_EGRESS"}
+{"text": "The wildcard SSL private key for *.cjlabs.dev needs to be regenerated after the incident", "expected_label": "NEVER_EGRESS"}
+{"text": "Review the vulnerability scan showing an unauthenticated RCE in our exposed Grafana instance", "expected_label": "NEVER_EGRESS"}
+{"text": "The Redis AUTH password for the session cache cluster is rEdIs_S3cr3t_2026!", "expected_label": "NEVER_EGRESS"}
+{"text": "Map the kill chain from initial phishing email to the lateral movement across our Kubernetes nodes", "expected_label": "NEVER_EGRESS"}
+{"text": "The threat intel feed identified our IP range in a botnet command-and-control blocklist", "expected_label": "NEVER_EGRESS"}
+{"text": "Export the Wireshark packet capture from the man-in-the-middle attack on the internal API gateway", "expected_label": "NEVER_EGRESS"}

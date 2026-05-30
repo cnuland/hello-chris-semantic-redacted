@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-sanitized-egress
+  namespace: semantic-redacted
+  labels:
+    app.kubernetes.io/part-of: semantic-redacted
+    app.kubernetes.io/managed-by: kubectl
+    policy-type: egress-gateway
+spec:
+  podSelector:
+    matchLabels:
+      app: redaction-service
+      role: egress-gateway
+  policyTypes:
+    - Egress
+  egress:
+    # Allow HTTPS to external SaaS endpoints only (exclude private ranges)
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+            except:
+              - 10.0.0.0/8
+              - 172.16.0.0/12
+              - 192.168.0.0/16
+      ports:
+        - protocol: TCP
+          port: 443

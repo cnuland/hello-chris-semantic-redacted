@@ -1,0 +1,19 @@
+# Fine-tuning configuration for sensitivity classification embeddings
+# Used by src/training/trainer.py
+
+base_model: "all-MiniLM-L6-v2"
+output_dir: "/app/models/finetuned/sensitivity-v1"
+
+data:
+  train_path: "/app/models/data/train.jsonl"
+
+training:
+  epochs: 20
+  batch_size: 16
+  learning_rate: 2e-5
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  seed: 42
+  evaluation_steps: 100
+  fp16: false
+  loss_type: "batch_all_triplet"

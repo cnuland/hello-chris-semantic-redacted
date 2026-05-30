@@ -1,0 +1,193 @@
+# Sensitivity Classifier Configuration
+# Used by SensitivityClassifier in classifier.py
+
+model:
+  name: "all-MiniLM-L6-v2"
+  path: "cnuland/semantic-routing-sensitivity"
+  top_k: 3
+  confidence_threshold: 0.35
+
+# ---------------------------------------------------------------
+# Fast-path keywords (case-insensitive substring match)
+# ---------------------------------------------------------------
+keywords:
+  INTERNAL:
+    - ".cjlabs.dev"
+    - ".svc.cluster.local"
+    - "homelab-maas"
+    - "semantic-redacted"
+    - "home-assistant"
+    - "openshift"
+    - "namespace"
+    - "internal ci"
+    - "internal sla"
+    - "our cluster"
+    - "our pipeline"
+    - "staging cluster"
+    - "worker-01"
+    - "worker-02"
+
+  CONFIDENTIAL:
+    - "salary"
+    - "salaries"
+    - "compensation"
+    - "termination"
+    - "performance review"
+    - "performance improvement plan"
+    - "hiring"
+    - "firing"
+    - "promotion timeline"
+    - "headcount"
+    - "board strategy"
+    - "customer churn"
+    - "non-compete"
+    - "acquisition term sheet"
+    - "vendor proposal"
+    - "employee complaint"
+    - "personnel file"
+    - "exit interview"
+    - "disciplinary"
+    - "m&a"
+    - "due diligence"
+    - "competitor pricing"
+    - "pricing strategy"
+    - "severance"
+    - "stock options"
+    - "equity grant"
+    - "nda"
+    - "trade secret"
+
+  REGULATED:
+    - "earnings"
+    - "revenue"
+    - "profit margin"
+    - "ebitda"
+    - "sec filing"
+    - "10-k"
+    - "10-q"
+    - "quarterly report"
+    - "quarterly financial"
+    - "financial review"
+    - "financial performance"
+    - "net income"
+    - "sox audit"
+    - "sox compliance"
+    - "hipaa"
+    - "gdpr"
+    - "pci compliance"
+    - "pci-dss"
+    - "clinical trial"
+    - "clinical study"
+    - "patient record"
+    - "patient data"
+    - "patient"
+    - "prescription"
+    - "medical record"
+    - "data processing agreement"
+    - "insider trading"
+    - "sanctions screening"
+    - "financial consolidation"
+    - "audit finding"
+    - "regulatory filing"
+    - "compliance report"
+    - "compliance checklist"
+
+  NEVER_EGRESS:
+    - "private key"
+    - "ssh key"
+    - "bearer token"
+    - "oauth client secret"
+    - "tls certificate"
+    - "database root password"
+    - "penetration test"
+    - "red team"
+    - "data breach"
+    - "incident response"
+    - "malware sample"
+    - "memory dump"
+    - "compromised"
+    - "vulnerability"
+    - "cve pending"
+    - "cve-"
+    - "security incident"
+    - "credentials"
+    - "sql injection"
+    - "forensic"
+    - "aws access key"
+    - "exploit"
+    - "zero-day"
+    - "zero day"
+    - "backdoor"
+    - "rootkit"
+    - "security scan"
+    - "pentest"
+    - "attack vector"
+    - "threat assessment"
+
+# ---------------------------------------------------------------
+# Fast-path regex patterns (case-insensitive)
+# ---------------------------------------------------------------
+patterns:
+  INTERNAL:
+    - name: "cluster_dns"
+      regex: '[a-z0-9-]+\.[a-z0-9-]+\.svc\.cluster\.local'
+    - name: "cjlabs_domain"
+      regex: '[a-z0-9.-]+\.cjlabs\.dev'
+    - name: "k8s_namespace"
+      regex: '\b(homelab-maas|semantic-redacted|home-assistant)\b'
+
+  CONFIDENTIAL:
+    - name: "email_address"
+      regex: '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
+    - name: "ssn"
+      regex: '\b\d{3}-\d{2}-\d{4}\b'
+    - name: "phone_number"
+      regex: '\b(?:\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}\b'
+
+  REGULATED:
+    - name: "credit_card"
+      regex: '\b(?:4\d{3}|5[1-5]\d{2}|3[47]\d{2}|6(?:011|5\d{2}))[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}\b'
+
+  NEVER_EGRESS:
+    - name: "api_key_sk"
+      regex: '\bsk_(?:live|test)_[A-Za-z0-9]{20,}\b'
+    - name: "github_pat"
+      regex: '\bghp_[A-Za-z0-9]{36,}\b'
+    - name: "jwt_token"
+      regex: '\beyJ[A-Za-z0-9_-]{10,}\.eyJ[A-Za-z0-9_-]{10,}\b'
+    - name: "private_key_header"
+      regex: '-----BEGIN (?:RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----'
+    - name: "generic_secret_prefix"
+      regex: '\b(?:sk-|ghp_|gho_|glpat-|xoxb-|xoxp-)[A-Za-z0-9]{16,}\b'
+    - name: "aws_access_key"
+      regex: '\bAKIA[0-9A-Z]{16}\b'
+
+# ---------------------------------------------------------------
+# 2D Routing Matrix
+# complexity_tier x sensitivity_level -> routing action
+# ---------------------------------------------------------------
+routing_matrix:
+  SIMPLE:
+    PUBLIC: "DIRECT_SAAS"
+    INTERNAL: "LOCAL_ONLY"
+    CONFIDENTIAL: "LOCAL_ONLY"
+    REGULATED: "LOCAL_ONLY"
+    NEVER_EGRESS: "LOCAL_ONLY"
+  MEDIUM:
+    PUBLIC: "DIRECT_SAAS"
+    INTERNAL: "REDACT_THEN_SAAS"
+    CONFIDENTIAL: "LOCAL_ONLY"
+    REGULATED: "LOCAL_ONLY"
+    NEVER_EGRESS: "LOCAL_ONLY"
+  COMPLEX:
+    PUBLIC: "DIRECT_SAAS"
+    INTERNAL: "REDACT_THEN_SAAS"
+    CONFIDENTIAL: "REDACT_THEN_SAAS"
+    REGULATED: "LOCAL_ONLY"
+    NEVER_EGRESS: "LOCAL_ONLY"
+  REASONING:
+    PUBLIC: "DIRECT_SAAS"
+    INTERNAL: "REDACT_THEN_SAAS"
+    CONFIDENTIAL: "LOCAL_ONLY"
+    REGULATED: "LOCAL_ONLY"
+    NEVER_EGRESS: "LOCAL_ONLY"

@@ -1,0 +1,42 @@
+{"text": "Contact Sarah Chen at sarah.chen@acmecorp.com for onboarding details.", "expected_entities": [{"type": "PERSON", "value": "Sarah Chen"}, {"type": "EMAIL_ADDRESS", "value": "sarah.chen@acmecorp.com"}]}
+{"text": "Please reach out to James Rivera, employee EMP-48291, regarding the transfer.", "expected_entities": [{"type": "PERSON", "value": "James Rivera"}, {"type": "EMPLOYEE_ID", "value": "EMP-48291"}]}
+{"text": "Marcus Thompson can be reached at (512) 867-5309 or marcus.t@globalwidgets.net.", "expected_entities": [{"type": "PERSON", "value": "Marcus Thompson"}, {"type": "PHONE_NUMBER", "value": "(512) 867-5309"}, {"type": "EMAIL_ADDRESS", "value": "marcus.t@globalwidgets.net"}]}
+{"text": "The cluster endpoint is api-gateway.cjlabs.dev on port 443.", "expected_entities": [{"type": "CLUSTER_NAME", "value": "api-gateway.cjlabs.dev"}]}
+{"text": "Route traffic through ingress-controller.cjlabs.dev for external access.", "expected_entities": [{"type": "CLUSTER_NAME", "value": "ingress-controller.cjlabs.dev"}]}
+{"text": "The monitoring stack is available at grafana.cjlabs.dev.", "expected_entities": [{"type": "CLUSTER_NAME", "value": "grafana.cjlabs.dev"}]}
+{"text": "Internal DNS resolves to ollama-qwen36.homelab-maas.svc.cluster.local for model inference.", "expected_entities": [{"type": "CLUSTER_NAME", "value": "ollama-qwen36.homelab-maas.svc.cluster.local"}]}
+{"text": "Deploy the new pod to the homelab-maas namespace alongside existing services.", "expected_entities": [{"type": "K8S_NAMESPACE", "value": "homelab-maas"}]}
+{"text": "The redaction service runs in semantic-redacted and the proxy lives in home-assistant.", "expected_entities": [{"type": "K8S_NAMESPACE", "value": "semantic-redacted"}, {"type": "K8S_NAMESPACE", "value": "home-assistant"}]}
+{"text": "Check the voice namespace for TTS pod status.", "expected_entities": [{"type": "K8S_NAMESPACE", "value": "voice"}]}
+{"text": "The n8n namespace contains all workflow automation pods.", "expected_entities": [{"type": "K8S_NAMESPACE", "value": "n8n"}]}
+{"text": "Migrate the authentication provider from keycloak namespace to the new OIDC setup.", "expected_entities": [{"type": "K8S_NAMESPACE", "value": "keycloak"}]}
+{"text": "Employee E-7829 submitted the expense report last Tuesday.", "expected_entities": [{"type": "EMPLOYEE_ID", "value": "E-7829"}]}
+{"text": "Assign ticket JIRA-4410 to EMP-10034 for triage.", "expected_entities": [{"type": "EMPLOYEE_ID", "value": "EMP-10034"}]}
+{"text": "The badge scan shows E-99812 entered Building C at 07:14.", "expected_entities": [{"type": "EMPLOYEE_ID", "value": "E-99812"}]}
+{"text": "Access the admin panel at https://dashboard.internal/admin to manage users.", "expected_entities": [{"type": "INTERNAL_URL", "value": "https://dashboard.internal/admin"}]}
+{"text": "The metrics endpoint is http://prometheus.monitoring.svc.cluster.local/api/v1/query.", "expected_entities": [{"type": "INTERNAL_URL", "value": "http://prometheus.monitoring.svc.cluster.local/api/v1/query"}]}
+{"text": "Push logs to https://loki.observability.internal/loki/api/v1/push for aggregation.", "expected_entities": [{"type": "INTERNAL_URL", "value": "https://loki.observability.internal/loki/api/v1/push"}]}
+{"text": "All design documents for Project Phoenix are stored in the shared drive.", "expected_entities": [{"type": "PROJECT_CODENAME", "value": "Project Phoenix"}]}
+{"text": "Operation Atlas will launch in Q3 pending security review.", "expected_entities": [{"type": "PROJECT_CODENAME", "value": "Operation Atlas"}]}
+{"text": "Initiative Horizon is the successor to Project Ember.", "expected_entities": [{"type": "PROJECT_CODENAME", "value": "Initiative Horizon"}, {"type": "PROJECT_CODENAME", "value": "Project Ember"}]}
+{"text": "The budget allocation for Project Nightfall exceeds the quarterly cap.", "expected_entities": [{"type": "PROJECT_CODENAME", "value": "Project Nightfall"}]}
+{"text": "Call the support line at +1-800-555-0199 for assistance.", "expected_entities": [{"type": "PHONE_NUMBER", "value": "+1-800-555-0199"}]}
+{"text": "Her mobile number is 415.555.0142 and her office line is (212) 555-0198.", "expected_entities": [{"type": "PHONE_NUMBER", "value": "415.555.0142"}, {"type": "PHONE_NUMBER", "value": "(212) 555-0198"}]}
+{"text": "Reach the London office at +44 20 7946 0958.", "expected_entities": [{"type": "PHONE_NUMBER", "value": "+44 20 7946 0958"}]}
+{"text": "My SSN is 219-09-9999 and my credit card is 4532 1488 0343 6728.", "expected_entities": [{"type": "US_SSN", "value": "219-09-9999"}, {"type": "CREDIT_CARD", "value": "4532 1488 0343 6728"}]}
+{"text": "Please update the billing record for card number 5425-2334-3010-9903.", "expected_entities": [{"type": "CREDIT_CARD", "value": "5425-2334-3010-9903"}]}
+{"text": "The refund was issued to Visa ending in 3714 496353 98431.", "expected_entities": [{"type": "CREDIT_CARD", "value": "3714 496353 98431"}]}
+{"text": "The server at 192.168.1.100 is unreachable from the DMZ.", "expected_entities": [{"type": "IP_ADDRESS", "value": "192.168.1.100"}]}
+{"text": "Allowlist the following IPs: 10.0.42.5 and 172.16.0.200.", "expected_entities": [{"type": "IP_ADDRESS", "value": "10.0.42.5"}, {"type": "IP_ADDRESS", "value": "172.16.0.200"}]}
+{"text": "DNS resolution for api.example.com points to 203.0.113.45.", "expected_entities": [{"type": "IP_ADDRESS", "value": "203.0.113.45"}]}
+{"text": "Send the invoice to David Park at d.park@finserv.io, employee EMP-22017. Deploy to the homelab-maas namespace for Project Titan.", "expected_entities": [{"type": "PERSON", "value": "David Park"}, {"type": "EMAIL_ADDRESS", "value": "d.park@finserv.io"}, {"type": "EMPLOYEE_ID", "value": "EMP-22017"}, {"type": "K8S_NAMESPACE", "value": "homelab-maas"}, {"type": "PROJECT_CODENAME", "value": "Project Titan"}]}
+{"text": "Priya Sharma (E-5510) reported that the endpoint https://vault.internal/v1/secret is returning 503 from IP 10.0.0.88.", "expected_entities": [{"type": "PERSON", "value": "Priya Sharma"}, {"type": "EMPLOYEE_ID", "value": "E-5510"}, {"type": "INTERNAL_URL", "value": "https://vault.internal/v1/secret"}, {"type": "IP_ADDRESS", "value": "10.0.0.88"}]}
+{"text": "Contact lisa.nguyen@techstart.com or call 650-555-0177. The cache is running on redis-cache.cjlabs.dev for Operation Cascade.", "expected_entities": [{"type": "EMAIL_ADDRESS", "value": "lisa.nguyen@techstart.com"}, {"type": "PHONE_NUMBER", "value": "650-555-0177"}, {"type": "CLUSTER_NAME", "value": "redis-cache.cjlabs.dev"}, {"type": "PROJECT_CODENAME", "value": "Operation Cascade"}]}
+{"text": "The number 10.0.0.1 looks like an IP but 867-5309 could be a phone fragment.", "expected_entities": [{"type": "IP_ADDRESS", "value": "10.0.0.1"}]}
+{"text": "Forward the logs to ops-team@monitoring.internal for the incident review.", "expected_entities": [{"type": "EMAIL_ADDRESS", "value": "ops-team@monitoring.internal"}]}
+{"text": "The user alexjohnson logged in from node worker-01.cjlabs.dev at 09:32 UTC.", "expected_entities": [{"type": "CLUSTER_NAME", "value": "worker-01.cjlabs.dev"}]}
+{"text": "Robert Kim, SSN 987-65-4321, is the primary contact at +1 312 555 0184.", "expected_entities": [{"type": "PERSON", "value": "Robert Kim"}, {"type": "US_SSN", "value": "987-65-4321"}, {"type": "PHONE_NUMBER", "value": "+1 312 555 0184"}]}
+{"text": "Forward logs from the semantic-redacted namespace to http://fluentd.logging.svc.cluster.local/api/intake.", "expected_entities": [{"type": "K8S_NAMESPACE", "value": "semantic-redacted"}, {"type": "INTERNAL_URL", "value": "http://fluentd.logging.svc.cluster.local/api/intake"}]}
+{"text": "Email admin@cjlabs.dev for cluster access requests.", "expected_entities": [{"type": "EMAIL_ADDRESS", "value": "admin@cjlabs.dev"}]}
+{"text": "Employee EMP-33021 transferred from the n8n namespace to voice namespace last sprint.", "expected_entities": [{"type": "EMPLOYEE_ID", "value": "EMP-33021"}, {"type": "K8S_NAMESPACE", "value": "n8n"}, {"type": "K8S_NAMESPACE", "value": "voice"}]}
+{"text": "Verify identity using SSN 456-78-9012 before processing the claim.", "expected_entities": [{"type": "US_SSN", "value": "456-78-9012"}]}

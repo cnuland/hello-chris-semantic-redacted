@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guardrails-service
+  namespace: semantic-redacted
+  labels:
+    app: guardrails-service
+    app.kubernetes.io/name: guardrails-service
+    app.kubernetes.io/component: guardrails
+    app.kubernetes.io/part-of: semantic-redacted
+    app.kubernetes.io/managed-by: kubectl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: guardrails-service
+  template:
+    metadata:
+      labels:
+        app: guardrails-service
+        app.kubernetes.io/name: guardrails-service
+        app.kubernetes.io/component: guardrails
+        app.kubernetes.io/part-of: semantic-redacted
+    spec:
+      serviceAccountName: guardrails-service
+      automountServiceAccountToken: false
+      containers:
+        - name: guardrails-service
+          image: image-registry.openshift-image-registry.svc:5000/semantic-redacted/guardrails-service:latest
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop:
+                - ALL
+          ports:
+            - containerPort: 8001
+              protocol: TCP
+              name: http
+          env:
+            - name: REDACTION_SERVICE_URL
+              value: "http://redaction-service.semantic-redacted.svc:8000"
+            - name: QWEN_ENDPOINT
+              value: "http://ollama-qwen36.homelab-maas.svc.cluster.local:11434"
+          volumeMounts:
+            - name: config
+              mountPath: /config
+              readOnly: true
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8001
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8001
+            initialDelaySeconds: 20
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+      volumes:
+        - name: config
+          configMap:
+            name: guardrails-service-config

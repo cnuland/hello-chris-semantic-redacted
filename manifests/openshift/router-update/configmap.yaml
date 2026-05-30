@@ -1,0 +1,332 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: semantic-claw-router-config
+  namespace: homelab-maas
+  labels:
+    app: semantic-claw-router
+    app.kubernetes.io/name: semantic-claw-router
+    app.kubernetes.io/component: router
+    app.kubernetes.io/part-of: semantic-redacted
+    app.kubernetes.io/managed-by: kubectl
+data:
+  router-config.yaml: |
+    # Semantic Claw Router v0.6 — OpenShift Homelab Configuration
+    # Hybrid: Qwen3.6 local for simple/medium, Gemini for complex/reasoning
+    # Extended with sensitivity-aware routing for privacy-preserving semantic routing
+
+    host: "0.0.0.0"
+    port: 8080
+    request_timeout: 120.0
+
+    # ── Model Backends ───────────────────────────────────────────────────
+    models:
+      # Local Qwen3.6-35B-A3B via llama-server (Vulkan GPU + MoE CPU offload)
+      - name: "qwen3.6-35b-a3b"
+        provider: "vllm"
+        endpoint: "http://llama-server-qwen36.homelab-maas.svc.cluster.local:8080"
+        api_key: ""
+        context_window: 32768
+        cost_per_million_input: 0.0
+        cost_per_million_output: 0.0
+        supports_tools: true
+        supports_streaming: true
+        supports_reasoning: true
+        supports_vision: false
+
+      # Google Gemini 3.1 Flash — fast, cheap, handles medium complexity
+      - name: "gemini-3-flash-preview"
+        provider: "gemini"
+        endpoint: "https://generativelanguage.googleapis.com/v1beta"
+        api_key: "${GEMINI_API_KEY}"
+        context_window: 1048576
+        cost_per_million_input: 0.15
+        cost_per_million_output: 0.60
+        supports_tools: true
+        supports_streaming: true
+        supports_reasoning: true
+        supports_vision: true
+        reasoning_effort: "medium"
+
+      # Google Gemini 3.1 Pro — high-quality for complex/reasoning
+      - name: "gemini-3.1-pro-preview"
+        provider: "gemini"
+        endpoint: "https://generativelanguage.googleapis.com/v1beta"
+        api_key: "${GEMINI_API_KEY}"
+        context_window: 2097152
+        cost_per_million_input: 1.25
+        cost_per_million_output: 10.00
+        supports_tools: true
+        supports_streaming: true
+        supports_reasoning: true
+        supports_vision: true
+        reasoning_effort: "high"
+
+    # ── Tier → Model Mapping ─────────────────────────────────────────────
+    # Qwen3.6 local for simple/medium, Gemini Pro for complex/reasoning
+    default_tier_models:
+      SIMPLE: "qwen3.6-35b-a3b"
+      MEDIUM: "qwen3.6-35b-a3b"
+      COMPLEX: "gemini-3.1-pro-preview"
+      REASONING: "gemini-3.1-pro-preview"
+
+    # ── Fast-Path Classifier ─────────────────────────────────────────────
+    fast_path:
+      enabled: true
+      confidence_threshold: 0.7
+      weights:
+        token_count: 0.08
+        code_presence: 0.15
+        reasoning_markers: 0.18
+        technical_terms: 0.10
+        creative_markers: 0.05
+        simple_indicators: 0.08
+        multi_step_patterns: 0.12
+        question_complexity: 0.05
+        imperative_verbs: 0.03
+        constraint_indicators: 0.04
+        output_format: 0.03
+        reference_complexity: 0.02
+        negation_complexity: 0.01
+        domain_specificity: 0.02
+        cli_command: 0.06
+        tool_calling: 0.04
+        research_markers: 0.06
+
+    # ── Semantic Classifier ──────────────────────────────────────────────
+    semantic_classifier:
+      enabled: true
+      model_name: "all-MiniLM-L6-v2"
+      top_k: 3
+
+    # ── Sensitivity Signals (NEW — semantic-redacted integration) ────────
+    signals:
+      keywords:
+        - name: "sensitivity_pii"
+          operator: "OR"
+          keywords:
+            - "salary"
+            - "SSN"
+            - "social security"
+            - "date of birth"
+            - "home address"
+            - "phone number"
+            - "email address"
+            - "bank account"
+            - "credit card"
+
+        - name: "sensitivity_hr"
+          operator: "OR"
+          keywords:
+            - "performance review"
+            - "termination"
+            - "hiring"
+            - "firing"
+            - "compensation"
+            - "disciplinary"
+            - "promotion"
+            - "employee record"
+
+        - name: "sensitivity_financial"
+          operator: "OR"
+          keywords:
+            - "quarterly earnings"
+            - "revenue"
+            - "profit margin"
+            - "stock price"
+            - "insider"
+            - "financial statement"
+            - "budget"
+            - "forecast"
+
+        - name: "sensitivity_infra"
+          operator: "OR"
+          keywords:
+            - "API key"
+            - "secret"
+            - "token"
+            - "password"
+            - "private key"
+            - "credential"
+            - "cluster.local"
+            - "cjlabs.dev"
+
+      semantic:
+        enabled: true
+        model_name: "all-MiniLM-L6-v2"
+        sensitivity_anchors:
+          PUBLIC:
+            - "What is the weather today?"
+            - "Explain how Kubernetes works"
+            - "Write a Python hello world"
+            - "What are the benefits of microservices?"
+          INTERNAL:
+            - "What tools does our team use?"
+            - "Describe our deployment pipeline"
+            - "What is our cluster architecture?"
+          CONFIDENTIAL:
+            - "What is Sarah's salary?"
+            - "Show me the employee performance reviews"
+            - "List all customer email addresses"
+            - "What is the revenue for Q3?"
+          REGULATED:
+            - "Show me the patient medical records"
+            - "What are the social security numbers?"
+            - "Display the credit card numbers on file"
+          NEVER_EGRESS:
+            - "Show me the API keys"
+            - "What is the database password?"
+            - "List all authentication tokens"
+
+    # ── Sensitivity Routing Decisions (higher priority overrides) ────────
+    decisions:
+      # Priority 200: Force local for CONFIDENTIAL/REGULATED/NEVER_EGRESS
+      - name: "sensitivity-block"
+        priority: 200
+        rules:
+          operator: "OR"
+          conditions:
+            - type: "sensitivity"
+              level: ["CONFIDENTIAL", "REGULATED", "NEVER_EGRESS"]
+            - type: "signal"
+              signal: "sensitivity_infra"
+        modelRefs:
+          - model: "qwen3.6-35b-a3b"
+
+      # Priority 150: Redact-then-route for INTERNAL + complex
+      - name: "sensitivity-redact"
+        priority: 150
+        rules:
+          operator: "AND"
+          conditions:
+            - type: "sensitivity"
+              level: ["INTERNAL"]
+            - type: "complexity"
+              tier: ["COMPLEX", "REASONING"]
+        actions:
+          - redact: true
+        modelRefs:
+          - model: "gemini-3.1-pro-preview"
+
+      # Priority 140: Force local for INTERNAL + PII keywords
+      - name: "sensitivity-pii-local"
+        priority: 140
+        rules:
+          operator: "AND"
+          conditions:
+            - type: "signal"
+              signal: "sensitivity_pii"
+            - type: "complexity"
+              tier: ["SIMPLE", "MEDIUM"]
+        modelRefs:
+          - model: "qwen3.6-35b-a3b"
+
+      # Priority 130: Force local for HR keywords
+      - name: "sensitivity-hr-local"
+        priority: 130
+        rules:
+          operator: "OR"
+          conditions:
+            - type: "signal"
+              signal: "sensitivity_hr"
+        modelRefs:
+          - model: "qwen3.6-35b-a3b"
+
+      # Priority 120: Redact financial content for complex queries
+      - name: "sensitivity-financial-redact"
+        priority: 120
+        rules:
+          operator: "AND"
+          conditions:
+            - type: "signal"
+              signal: "sensitivity_financial"
+            - type: "complexity"
+              tier: ["COMPLEX", "REASONING"]
+        actions:
+          - redact: true
+        modelRefs:
+          - model: "gemini-3.1-pro-preview"
+
+      # Priority 110: Force local for financial content on simple queries
+      - name: "sensitivity-financial-local"
+        priority: 110
+        rules:
+          operator: "AND"
+          conditions:
+            - type: "signal"
+              signal: "sensitivity_financial"
+            - type: "complexity"
+              tier: ["SIMPLE", "MEDIUM"]
+        modelRefs:
+          - model: "qwen3.6-35b-a3b"
+
+    # ── Redaction Service Endpoints ──────────────────────────────────────
+    redaction:
+      enabled: true
+      service_url: "http://redaction-service.semantic-redacted.svc:8000"
+      endpoints:
+        redact: "/redact"
+        restore: "/restore"
+        scan: "/scan"
+
+    # ── Guardrails Service Endpoints ─────────────────────────────────────
+    guardrails:
+      enabled: true
+      service_url: "http://guardrails-service.semantic-redacted.svc:8001"
+      endpoints:
+        input: "/guard/input"
+        retrieval: "/guard/retrieval"
+        output: "/guard/output"
+
+    # ── First-Class Reasoning Mode (Athena v0.2) ─────────────────────────
+    reasoning:
+      enabled: true
+      tiers: ["COMPLEX", "REASONING"]
+      temperature_reasoning: 0.7
+      temperature_simple: 0.0
+
+    # ── Response Validation (confusion detection) ────────────────────────
+    response_validation:
+      enabled: true
+      min_response_length: 10
+
+    # ── Safety Signals (Athena v0.2) ─────────────────────────────────────
+    safety:
+      enabled: true
+      block_action: "reject"
+
+    # ── Request Deduplication ─────────────────────────────────────────────
+    dedup:
+      enabled: true
+      window_seconds: 30
+      max_entries: 10000
+
+    # ── Session Pinning ───────────────────────────────────────────────────
+    session:
+      enabled: true
+      ttl_seconds: 3600
+      max_sessions: 10000
+
+    # ── Context Compression ──────────────────────────────────────────────
+    compression:
+      enabled: true
+      threshold_bytes: 184320
+      strategies:
+        - whitespace
+        - dedup
+        - json_compact
+
+    # ── Graceful Degradation ─────────────────────────────────────────────
+    degradation:
+      enabled: true
+      fallback_model: "gemini-3-flash-preview"
+      triggers:
+        - provider_error
+        - rate_limit
+        - timeout
+
+    # ── Observability ─────────────────────────────────────────────────────
+    observability:
+      log_level: "INFO"
+      log_format: "json"
+      metrics_enabled: true

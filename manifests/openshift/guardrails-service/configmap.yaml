@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: guardrails-service-config
+  namespace: semantic-redacted
+  labels:
+    app: guardrails-service
+    app.kubernetes.io/name: guardrails-service
+    app.kubernetes.io/component: guardrails
+    app.kubernetes.io/part-of: semantic-redacted
+    app.kubernetes.io/managed-by: kubectl
+data:
+  config.yml: |
+    models:
+      - type: main
+        engine: openai
+        model: qwen3.6-35b-a3b
+        parameters:
+          base_url: "http://llama-server-qwen36.homelab-maas.svc.cluster.local:8080/v1"
+          api_key: "not-needed"
+
+    rails:
+      input:
+        flows:
+          - sensitivity check
+          - pii detection
+          - secret detection
+          - jailbreak detection
+
+      retrieval:
+        flows:
+          - sensitivity filter
+
+      output:
+        flows:
+          - output pii scan
+          - output secret scan
+          - reconstruction detection
+
+    instructions:
+      - type: general
+        content: |
+          You are a security guardrail evaluator. Your job is to determine whether
+          content is safe to send to an external AI service. You must be conservative:
+          if in doubt, block the content.
+
+          Sensitive content includes: personal information (names, emails, phone numbers,
+          SSNs, addresses), financial data (salaries, revenue, earnings), HR matters
+          (performance reviews, terminations, hiring decisions), credentials (API keys,
+          passwords, tokens), and internal infrastructure details (cluster names,
+          namespace names, internal URLs).

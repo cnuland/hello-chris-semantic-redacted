@@ -1,0 +1,25 @@
+{"text": "Why is the ollama service unreachable from the semantic-redacted namespace?", "expected_label": "INTERNAL"}
+{"text": "Can you check the pod logs for the deployment on hulk.cjlabs.dev?", "expected_label": "INTERNAL"}
+{"text": "What routes does the ingress controller expose in homelab-maas?", "expected_label": "INTERNAL"}
+{"text": "Update the resource quotas for worker-02 to allow 32Gi memory", "expected_label": "INTERNAL"}
+{"text": "How does the request flow from our proxy to the local model endpoint?", "expected_label": "INTERNAL"}
+{"text": "Create a network policy allowing traffic between our internal services", "expected_label": "INTERNAL"}
+{"text": "Show me the current CronJob schedule in the staging cluster", "expected_label": "INTERNAL"}
+{"text": "What version of the semantic claw router is deployed in our cluster right now?", "expected_label": "INTERNAL"}
+{"text": "How do we configure the BuildConfig for the presidio-analyzer service in semantic-redacted?", "expected_label": "INTERNAL"}
+{"text": "What is the current disk utilization on the PVCs attached to worker-01?", "expected_label": "INTERNAL"}
+{"text": "Check whether the Argo CD sync for the guardrails deployment succeeded", "expected_label": "INTERNAL"}
+{"text": "List all ServiceAccounts in the semantic-redacted namespace and their bound roles", "expected_label": "INTERNAL"}
+{"text": "The llama-server-qwen36 pod is in CrashLoopBackOff, pull the last restart reason", "expected_label": "INTERNAL"}
+{"text": "How do we expose the NeMo Guardrails service via an internal OpenShift Route?", "expected_label": "INTERNAL"}
+{"text": "What are the current LimitRange defaults applied to new pods in homelab-maas?", "expected_label": "INTERNAL"}
+{"text": "Review the Tekton pipeline definition for the redaction-service image build", "expected_label": "INTERNAL"}
+{"text": "Show the egress NetworkPolicy rules that control outbound traffic from semantic-redacted", "expected_label": "INTERNAL"}
+{"text": "Is the Prometheus ServiceMonitor scraping metrics from the openai-proxy pods?", "expected_label": "INTERNAL"}
+{"text": "What DNS entries resolve for *.apps.ironman.cjlabs.dev inside the cluster?", "expected_label": "INTERNAL"}
+{"text": "Draft a YAML manifest for a new Deployment in the voice namespace", "expected_label": "INTERNAL"}
+{"text": "Why is the image pull failing for the UBI9-based container in our internal registry?", "expected_label": "INTERNAL"}
+{"text": "Compare the resource requests across all pods in homelab-maas versus semantic-redacted", "expected_label": "INTERNAL"}
+{"text": "How should we tag internal container images for the next sprint release?", "expected_label": "INTERNAL"}
+{"text": "Check whether the ClusterRole binding for the CI service account has the right permissions", "expected_label": "INTERNAL"}
+{"text": "What alerting rules are configured in our Prometheus instance for pod restarts?", "expected_label": "INTERNAL"}

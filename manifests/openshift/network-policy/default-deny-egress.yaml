@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-egress
+  namespace: semantic-redacted
+  labels:
+    app.kubernetes.io/part-of: semantic-redacted
+    app.kubernetes.io/managed-by: kubectl
+    policy-type: baseline
+spec:
+  podSelector: {}
+  policyTypes:
+    - Egress
