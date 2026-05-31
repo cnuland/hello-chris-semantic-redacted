@@ -2,7 +2,7 @@
 
 Semantic routing is safe only when the first trust decision happens inside the isolated environment. This project adds a **sensitivity dimension** to LLM request routing, deploys Presidio-based redaction and guardrails as OpenShift-native microservices, and enforces egress policy so only sanitized traffic can reach SaaS model endpoints.
 
-OpenShift becomes the enforcement boundary — not the application.
+OpenShift becomes the enforcement boundary, not the application.
 
 ## The Problem
 
