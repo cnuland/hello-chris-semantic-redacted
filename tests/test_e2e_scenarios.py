@@ -74,10 +74,10 @@ async def test_scenario_1_public_query(
     redaction_url: str,
     guardrails_url: str,
 ) -> None:
-    """PUBLIC query should pass all rails and route directly to SaaS.
+    """PUBLIC query goes through redaction pipeline then to SaaS.
 
     Input: "What is the CAP theorem in distributed systems?"
-    Expected: classification=PUBLIC, guardrails=ALLOW, no redaction needed.
+    Expected: classification=PUBLIC, guardrails=ALLOW, redaction pipeline runs (finds nothing).
     """
     if not _service_reachable(redaction_url):
         pytest.skip(f"Redaction service unreachable at {redaction_url}")

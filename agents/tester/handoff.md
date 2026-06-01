@@ -90,7 +90,7 @@ Skipped: `test_redact_phone` — Presidio + en_core_web_sm has limited phone num
 
 | Test | Input | Expected | Actual | Result |
 |------|-------|----------|--------|--------|
-| Public query → DIRECT_SAAS | Generic question | ALLOW | ALLOW | PASS |
+| Public query → REDACT_THEN_SAAS | Generic question | ALLOW | ALLOW | PASS |
 | CONFIDENTIAL → LOCAL_ONLY | HR content | BLOCK_SAAS | BLOCK_SAAS | PASS |
 | REGULATED → LOCAL_ONLY | Financial data | BLOCK_SAAS | BLOCK_SAAS | PASS |
 | Secret detection | API key in prompt | BLOCK_SAAS | BLOCK_SAAS | PASS |

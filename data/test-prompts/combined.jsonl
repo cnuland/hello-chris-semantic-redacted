@@ -1,0 +1,125 @@
+{"text": "Prepare the annual compensation adjustment spreadsheet for the engineering department", "tier": "CONFIDENTIAL"}
+{"text": "What was the outcome of the disciplinary hearing for the junior developer?", "tier": "CONFIDENTIAL"}
+{"text": "Send a summary of our hiring pipeline for the VP of Sales role to the CEO", "tier": "CONFIDENTIAL"}
+{"text": "Draft a counter-offer letter with a new salary of $185,000 for the backend lead", "tier": "CONFIDENTIAL"}
+{"text": "Compile the exit interview notes from the three engineers who resigned in April", "tier": "CONFIDENTIAL"}
+{"text": "How many employees are on a performance improvement plan this quarter?", "tier": "CONFIDENTIAL"}
+{"text": "Summarize the M&A due diligence findings on the target company's tech stack", "tier": "CONFIDENTIAL"}
+{"text": "Prepare a comparison of our pricing against the proposal from competitor XYZ Corp", "tier": "CONFIDENTIAL"}
+{"text": "What is the total annual bonus pool allocated for the data engineering team?", "tier": "CONFIDENTIAL"}
+{"text": "Draft a termination letter for the underperforming sales associate in the Northeast region", "tier": "CONFIDENTIAL"}
+{"text": "Compile the 360-degree feedback results for the director of product management", "tier": "CONFIDENTIAL"}
+{"text": "What is customer Acme Corp's contracted annual spend and renewal date?", "tier": "CONFIDENTIAL"}
+{"text": "Summarize the key negotiation points from the SaaS licensing deal with vendor BetaTech", "tier": "CONFIDENTIAL"}
+{"text": "Prepare the headcount reduction plan for the Q4 restructuring announcement", "tier": "CONFIDENTIAL"}
+{"text": "List all employees who received equity refresher grants in the last cycle", "tier": "CONFIDENTIAL"}
+{"text": "What is our customer acquisition cost by segment and how does it compare to the competitor benchmark?", "tier": "CONFIDENTIAL"}
+{"text": "Draft the board deck slide showing revenue projections for the upcoming investor meeting", "tier": "CONFIDENTIAL"}
+{"text": "Summarize the background check findings for the new hire in the finance department", "tier": "CONFIDENTIAL"}
+{"text": "What were the margin concessions we offered to close the enterprise deal with GlobalTech?", "tier": "CONFIDENTIAL"}
+{"text": "Prepare the organizational chart showing reporting lines after the merger integration", "tier": "CONFIDENTIAL"}
+{"text": "Compile the diversity metrics report broken down by department and seniority level", "tier": "CONFIDENTIAL"}
+{"text": "What is the retention bonus structure for key personnel during the acquisition transition?", "tier": "CONFIDENTIAL"}
+{"text": "Summarize the intellectual property audit results for the startup we are acquiring", "tier": "CONFIDENTIAL"}
+{"text": "Draft talking points about the upcoming layoffs for the all-hands meeting", "tier": "CONFIDENTIAL"}
+{"text": "What are the commission rates and quota attainment figures for each sales representative?", "tier": "CONFIDENTIAL"}
+{"text": "Why is the ollama service unreachable from the semantic-redacted namespace?", "tier": "INTERNAL"}
+{"text": "Can you check the pod logs for the deployment on hulk.cjlabs.dev?", "tier": "INTERNAL"}
+{"text": "What routes does the ingress controller expose in homelab-maas?", "tier": "INTERNAL"}
+{"text": "Update the resource quotas for worker-02 to allow 32Gi memory", "tier": "INTERNAL"}
+{"text": "How does the request flow from our proxy to the local model endpoint?", "tier": "INTERNAL"}
+{"text": "Create a network policy allowing traffic between our internal services", "tier": "INTERNAL"}
+{"text": "Show me the current CronJob schedule in the staging cluster", "tier": "INTERNAL"}
+{"text": "What version of the semantic claw router is deployed in our cluster right now?", "tier": "INTERNAL"}
+{"text": "How do we configure the BuildConfig for the presidio-analyzer service in semantic-redacted?", "tier": "INTERNAL"}
+{"text": "What is the current disk utilization on the PVCs attached to worker-01?", "tier": "INTERNAL"}
+{"text": "Check whether the Argo CD sync for the guardrails deployment succeeded", "tier": "INTERNAL"}
+{"text": "List all ServiceAccounts in the semantic-redacted namespace and their bound roles", "tier": "INTERNAL"}
+{"text": "The llama-server-qwen36 pod is in CrashLoopBackOff, pull the last restart reason", "tier": "INTERNAL"}
+{"text": "How do we expose the NeMo Guardrails service via an internal OpenShift Route?", "tier": "INTERNAL"}
+{"text": "What are the current LimitRange defaults applied to new pods in homelab-maas?", "tier": "INTERNAL"}
+{"text": "Review the Tekton pipeline definition for the redaction-service image build", "tier": "INTERNAL"}
+{"text": "Show the egress NetworkPolicy rules that control outbound traffic from semantic-redacted", "tier": "INTERNAL"}
+{"text": "Is the Prometheus ServiceMonitor scraping metrics from the openai-proxy pods?", "tier": "INTERNAL"}
+{"text": "What DNS entries resolve for *.apps.ironman.cjlabs.dev inside the cluster?", "tier": "INTERNAL"}
+{"text": "Draft a YAML manifest for a new Deployment in the voice namespace", "tier": "INTERNAL"}
+{"text": "Why is the image pull failing for the UBI9-based container in our internal registry?", "tier": "INTERNAL"}
+{"text": "Compare the resource requests across all pods in homelab-maas versus semantic-redacted", "tier": "INTERNAL"}
+{"text": "How should we tag internal container images for the next sprint release?", "tier": "INTERNAL"}
+{"text": "Check whether the ClusterRole binding for the CI service account has the right permissions", "tier": "INTERNAL"}
+{"text": "What alerting rules are configured in our Prometheus instance for pod restarts?", "tier": "INTERNAL"}
+{"text": "Rotate the production database credentials and store the new password in vault", "tier": "NEVER_EGRESS"}
+{"text": "Our WAF detected a SQL injection attempt against the auth endpoint, analyze the payload", "tier": "NEVER_EGRESS"}
+{"text": "The security scanner flagged a critical CVE in our container base image, assess the blast radius", "tier": "NEVER_EGRESS"}
+{"text": "Here are the AWS access keys for the staging account: AKIAIOSFODNN7EXAMPLE", "tier": "NEVER_EGRESS"}
+{"text": "Decode this JWT from the compromised session and identify what scopes were granted", "tier": "NEVER_EGRESS"}
+{"text": "Attach the forensic disk image from the breached server for analysis", "tier": "NEVER_EGRESS"}
+{"text": "We need to revoke the TLS certificate for api.prod.internal after the key was leaked", "tier": "NEVER_EGRESS"}
+{"text": "Run the SAST results against the code that contains the hardcoded bearer token", "tier": "NEVER_EGRESS"}
+{"text": "The Kubernetes service account token for the production cluster admin is eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJrdWJlcm5ldGVz", "tier": "NEVER_EGRESS"}
+{"text": "Analyze the network capture from the exfiltration attempt on the production database", "tier": "NEVER_EGRESS"}
+{"text": "The HashiCorp Vault unseal key shard 3 of 5 is: d3Jvbmdfa2V5X2V4YW1wbGU=", "tier": "NEVER_EGRESS"}
+{"text": "Review the SIEM alert correlating lateral movement between compromised hosts in the DMZ", "tier": "NEVER_EGRESS"}
+{"text": "Our private GPG signing key for the release pipeline was committed to a public branch", "tier": "NEVER_EGRESS"}
+{"text": "The intrusion detection system flagged a reverse shell callback from pod presidio-analyzer-7b8c9", "tier": "NEVER_EGRESS"}
+{"text": "Document the indicators of compromise from the supply chain attack on our npm dependency", "tier": "NEVER_EGRESS"}
+{"text": "The LDAP bind password for the Active Directory service account is P@ssw0rd!Pr0d2026", "tier": "NEVER_EGRESS"}
+{"text": "Perform a post-mortem on the privilege escalation exploit that gave the attacker cluster-admin", "tier": "NEVER_EGRESS"}
+{"text": "Extract the encryption keys from the etcd backup for the disaster recovery test", "tier": "NEVER_EGRESS"}
+{"text": "Analyze the C2 beacon traffic pattern observed in the compromised container's network logs", "tier": "NEVER_EGRESS"}
+{"text": "The wildcard SSL private key for *.cjlabs.dev needs to be regenerated after the incident", "tier": "NEVER_EGRESS"}
+{"text": "Review the vulnerability scan showing an unauthenticated RCE in our exposed Grafana instance", "tier": "NEVER_EGRESS"}
+{"text": "The Redis AUTH password for the session cache cluster is rEdIs_S3cr3t_2026!", "tier": "NEVER_EGRESS"}
+{"text": "Map the kill chain from initial phishing email to the lateral movement across our Kubernetes nodes", "tier": "NEVER_EGRESS"}
+{"text": "The threat intel feed identified our IP range in a botnet command-and-control blocklist", "tier": "NEVER_EGRESS"}
+{"text": "Export the Wireshark packet capture from the man-in-the-middle attack on the internal API gateway", "tier": "NEVER_EGRESS"}
+{"text": "What programming languages are best for web development?", "tier": "PUBLIC"}
+{"text": "How does garbage collection work in Java?", "tier": "PUBLIC"}
+{"text": "Explain the difference between a stack and a queue", "tier": "PUBLIC"}
+{"text": "What is Kubernetes and why is it used for container orchestration?", "tier": "PUBLIC"}
+{"text": "Describe the Model-View-Controller design pattern", "tier": "PUBLIC"}
+{"text": "What are the key features of Python 3.12?", "tier": "PUBLIC"}
+{"text": "How do you implement binary search in C++?", "tier": "PUBLIC"}
+{"text": "What is the difference between symmetric and asymmetric encryption?", "tier": "PUBLIC"}
+{"text": "What are the benefits of using a message queue like RabbitMQ or Kafka?", "tier": "PUBLIC"}
+{"text": "Explain how a blockchain consensus mechanism works", "tier": "PUBLIC"}
+{"text": "What is the difference between monolithic and microservices architecture?", "tier": "PUBLIC"}
+{"text": "How do load balancers distribute traffic across servers?", "tier": "PUBLIC"}
+{"text": "Write a Python script that reads a CSV file and calculates column averages", "tier": "PUBLIC"}
+{"text": "What is eventual consistency in distributed databases?", "tier": "PUBLIC"}
+{"text": "Explain the OWASP Top 10 web application security risks", "tier": "PUBLIC"}
+{"text": "How does TLS 1.3 differ from TLS 1.2?", "tier": "PUBLIC"}
+{"text": "What are Kubernetes Operators and when should you use them?", "tier": "PUBLIC"}
+{"text": "Explain how Git branching strategies like GitFlow work", "tier": "PUBLIC"}
+{"text": "What is infrastructure as code and how does Terraform implement it?", "tier": "PUBLIC"}
+{"text": "Describe the differences between SQL and NoSQL databases", "tier": "PUBLIC"}
+{"text": "How does container networking work in general?", "tier": "PUBLIC"}
+{"text": "What is a service mesh and why would you deploy one?", "tier": "PUBLIC"}
+{"text": "Explain the publish-subscribe pattern in event-driven architecture", "tier": "PUBLIC"}
+{"text": "What are OpenShift Routes and how do they compare to Kubernetes Ingress?", "tier": "PUBLIC"}
+{"text": "How does rate limiting work in API gateway design?", "tier": "PUBLIC"}
+{"text": "Calculate the EBITDA margin trend for the last four fiscal quarters", "tier": "REGULATED"}
+{"text": "A patient with ID MRN-44821 needs their prescription history reviewed for the audit", "tier": "REGULATED"}
+{"text": "Verify that all cardholder data in the transactions table is masked per PCI-DSS requirements", "tier": "REGULATED"}
+{"text": "Generate the annual SOX compliance checklist for the IT general controls review", "tier": "REGULATED"}
+{"text": "We received a GDPR subject access request from a user in Germany, compile their data", "tier": "REGULATED"}
+{"text": "Summarize the SEC comment letter responses before the 10-Q amendment deadline", "tier": "REGULATED"}
+{"text": "Review the clinical trial adverse event reports for regulatory submission to the FDA", "tier": "REGULATED"}
+{"text": "Prepare the revenue recognition schedule for the external auditors under ASC 606", "tier": "REGULATED"}
+{"text": "Extract all EU resident email addresses from the marketing database for GDPR right-to-erasure processing", "tier": "REGULATED"}
+{"text": "Prepare the quarterly SOX 404 management assessment of internal controls over financial reporting", "tier": "REGULATED"}
+{"text": "A patient at facility 12 reported an adverse drug reaction; file the MedWatch report with the FDA", "tier": "REGULATED"}
+{"text": "Validate that the payment processing system truncates the PAN to the last four digits in all log files", "tier": "REGULATED"}
+{"text": "Compile the list of material weaknesses identified during the annual SOX audit for the audit committee", "tier": "REGULATED"}
+{"text": "Process the GDPR data portability request and export user profile data in machine-readable format", "tier": "REGULATED"}
+{"text": "Draft the 8-K filing for the SEC regarding the material event disclosed this morning", "tier": "REGULATED"}
+{"text": "Review the PHI access logs to determine whether the nurse accessed patient records outside her department", "tier": "REGULATED"}
+{"text": "What is our current PCI-DSS self-assessment questionnaire status and when does certification expire?", "tier": "REGULATED"}
+{"text": "Prepare the HIPAA breach notification letter template for affected patients", "tier": "REGULATED"}
+{"text": "Calculate the deferred revenue balance and ensure recognition complies with ASC 606 for the annual report", "tier": "REGULATED"}
+{"text": "Generate the GDPR Records of Processing Activities for all data controllers in the EU subsidiary", "tier": "REGULATED"}
+{"text": "Review the SOX IT general controls testing results for the ERP system change management process", "tier": "REGULATED"}
+{"text": "Compile the Sarbanes-Oxley Section 302 certification for the CFO to sign", "tier": "REGULATED"}
+{"text": "What is the HIPAA minimum necessary standard for sharing patient lab results with the referring physician?", "tier": "REGULATED"}
+{"text": "Audit the tokenization vault to confirm no raw credit card numbers are stored outside the PCI-DSS cardholder data environment", "tier": "REGULATED"}
+{"text": "Prepare the annual anti-money laundering suspicious activity report for FinCEN filing", "tier": "REGULATED"}

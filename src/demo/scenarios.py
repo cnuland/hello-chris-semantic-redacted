@@ -26,15 +26,15 @@ class DemoScenario:
 
 
 # ---------------------------------------------------------------------------
-# Scenario 1: Public Query -- Direct SaaS Routing
+# Scenario 1: Public Query -- Redact then SaaS
 # ---------------------------------------------------------------------------
 SCENARIO_1 = DemoScenario(
     id=1,
-    name="Public Query -- Direct SaaS Routing",
+    name="Public Query -- Redact then SaaS",
     description=(
-        "Establish that public content flows to SaaS models without "
-        "interference. This is the baseline -- nothing changes for "
-        "non-sensitive traffic."
+        "Even public content goes through the redaction pipeline before "
+        "reaching SaaS. The scan finds nothing to redact, but the pipeline "
+        "runs anyway -- no content bypasses the safety checks."
     ),
     input_messages=[
         {
@@ -48,12 +48,11 @@ SCENARIO_1 = DemoScenario(
     ],
     expected_complexity="MEDIUM",
     expected_sensitivity="PUBLIC",
-    expected_routing_action="DIRECT_SAAS",
+    expected_routing_action="REDACT_THEN_SAAS",
     expected_model="gemini-3.1-flash-preview",
     validation_checks=[
         "sensitivity_level_is_PUBLIC",
-        "routing_action_is_DIRECT_SAAS",
-        "redaction_count_is_0",
+        "routing_action_is_REDACT_THEN_SAAS",
         "response_contains_content",
     ],
 )

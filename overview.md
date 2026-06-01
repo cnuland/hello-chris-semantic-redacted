@@ -34,17 +34,16 @@ What it does NOT handle:
 Add **sensitivity** as a second routing dimension, creating a 2D decision matrix:
 
 ```
-                    PUBLIC    INTERNAL    CONFIDENTIAL    REGULATED    NEVER_EGRESS
-SIMPLE              SaaS      Local       Local           Local        Local
-MEDIUM              SaaS      Redact→SaaS Local           Local        Local
-COMPLEX             SaaS      Redact→SaaS Redact→SaaS     Local        Local
-REASONING           SaaS      Redact→SaaS Local           Local        Local
+                    PUBLIC       INTERNAL    CONFIDENTIAL    REGULATED    NEVER_EGRESS
+SIMPLE              Redact→SaaS  Local       Local           Local        Local
+MEDIUM              Redact→SaaS  Redact→SaaS Local           Local        Local
+COMPLEX             Redact→SaaS  Redact→SaaS Redact→SaaS     Local        Local
+REASONING           Redact→SaaS  Redact→SaaS Local           Local        Local
 ```
 
-**Three routing outcomes:**
-1. **Direct SaaS** — Public content, any complexity. No redaction needed.
-2. **Redact → SaaS** — Content has some sensitivity but can be sanitized. Pseudonymize PII, strip secrets, then route to SaaS. Restore placeholders in the response.
-3. **Local only** — Content is too sensitive to leave the cluster, even redacted. Route to Qwen.
+**Two routing outcomes:**
+1. **Redact → SaaS** — All SaaS-bound content goes through the redaction pipeline. Pseudonymize PII, strip secrets, then route to SaaS. Restore placeholders in the response. Even public content runs through redaction — the overhead is negligible and eliminates the risk of misclassification leaking data.
+2. **Local only** — Content is too sensitive to leave the cluster, even redacted. Route to Qwen.
 
 ## What Red Hat Brings
 

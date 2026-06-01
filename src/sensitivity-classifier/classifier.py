@@ -250,7 +250,7 @@ class SensitivityClassifier:
             sensitivity_level: One of PUBLIC, INTERNAL, CONFIDENTIAL, REGULATED, NEVER_EGRESS
 
         Returns:
-            One of DIRECT_SAAS, REDACT_THEN_SAAS, LOCAL_ONLY
+            One of REDACT_THEN_SAAS, LOCAL_ONLY
         """
         tier_upper = complexity_tier.upper()
         level_upper = sensitivity_level.upper()

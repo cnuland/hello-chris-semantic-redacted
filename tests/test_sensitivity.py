@@ -149,11 +149,11 @@ class TestRoutingMatrix:
     @pytest.mark.parametrize(
         "complexity, sensitivity, expected_action",
         [
-            # PUBLIC column: always DIRECT_SAAS
-            ("SIMPLE", "PUBLIC", "DIRECT_SAAS"),
-            ("MEDIUM", "PUBLIC", "DIRECT_SAAS"),
-            ("COMPLEX", "PUBLIC", "DIRECT_SAAS"),
-            ("REASONING", "PUBLIC", "DIRECT_SAAS"),
+            # PUBLIC column: always REDACT_THEN_SAAS
+            ("SIMPLE", "PUBLIC", "REDACT_THEN_SAAS"),
+            ("MEDIUM", "PUBLIC", "REDACT_THEN_SAAS"),
+            ("COMPLEX", "PUBLIC", "REDACT_THEN_SAAS"),
+            ("REASONING", "PUBLIC", "REDACT_THEN_SAAS"),
             # INTERNAL column
             ("SIMPLE", "INTERNAL", "LOCAL_ONLY"),
             ("MEDIUM", "INTERNAL", "REDACT_THEN_SAAS"),

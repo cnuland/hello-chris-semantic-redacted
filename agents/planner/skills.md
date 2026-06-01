@@ -255,7 +255,7 @@ AC-060: Every routing decision produces a JSON log line to stdout containing
 at minimum: request_id (UUID), timestamp (ISO 8601), complexity_tier
 (SIMPLE|MEDIUM|COMPLEX|REASONING), sensitivity_level
 (PUBLIC|INTERNAL|CONFIDENTIAL|REGULATED|NEVER_EGRESS), route_decision
-(DIRECT_SAAS|REDACT_THEN_SAAS|LOCAL_ONLY), and processing_time_ms (integer).
+(REDACT_THEN_SAAS|LOCAL_ONLY), and processing_time_ms (integer).
 ```
 
 **End-to-end demo scenario:**

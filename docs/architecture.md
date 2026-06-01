@@ -84,7 +84,6 @@ Decision engine consults the 2D matrix:
   complexity × sensitivity → routing_action
 
   routing_action is one of:
-  - DIRECT_SAAS: Send to Gemini as-is
   - REDACT_THEN_SAAS: Redact with Presidio, then send to Gemini
   - LOCAL_ONLY: Send to local Qwen, never leaves cluster
 
@@ -96,14 +95,7 @@ Request → Qwen 3.6 (ollama-qwen36.homelab-maas.svc:11434)
   - Full fidelity (all PII, context, RAG chunks included)
   - Response returned directly to client
 
-Step 6b: DIRECT_SAAS Path
-─────────────────────────
-Request → Gemini (generativelanguage.googleapis.com)
-  - No sensitive content detected
-  - No redaction needed
-  - Normal routing through provider
-
-Step 6c: REDACT_THEN_SAAS Path
+Step 6b: REDACT_THEN_SAAS Path
 ──────────────────────────────
 Request → NeMo Guardrails (Input Rail)
   - Validates that redaction is appropriate for this content
@@ -221,7 +213,7 @@ Every request produces a structured JSON log entry:
 | NeMo Egress Guard | Gemini API | HTTPS/443 | — | **BLOCKED** |
 | Qdrant | any external | HTTPS/443 | — | **BLOCKED** |
 | Demo Runner | Router | HTTP/8080 | Test requests | Yes (cross-namespace) |
-| Any pod | Gemini API | HTTPS/443 | Direct SaaS | **BLOCKED** |
+| Any pod (except egress gateway) | Gemini API | HTTPS/443 | Unauthorized egress | **BLOCKED** |
 
 ## Integration Points with Existing Infrastructure
 

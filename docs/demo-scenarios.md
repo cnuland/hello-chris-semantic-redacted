@@ -14,9 +14,9 @@ The demo narrative builds progressively:
 
 ---
 
-## Scenario 1: Public Query — Direct SaaS Routing
+## Scenario 1: Public Query — Redact then SaaS
 
-**Purpose:** Establish that public content flows to SaaS models without interference. This is the baseline — nothing changes for non-sensitive traffic.
+**Purpose:** Even public content goes through the redaction pipeline before reaching SaaS. The scan finds nothing to redact, but the pipeline runs — no content bypasses the safety checks.
 
 **Input:**
 ```json
@@ -36,16 +36,16 @@ The demo narrative builds progressively:
 - Sensitivity: PUBLIC (general knowledge, no sensitive data)
 
 **Expected Routing:**
-- Action: DIRECT_SAAS
+- Action: REDACT_THEN_SAAS
 - Model: Gemini 3.1 Flash (cost-optimized for MEDIUM)
-- Redaction: None
+- Redaction: Pipeline runs, 0 entities detected
 - Guardrails: Input rail passes (PUBLIC), no retrieval rail, no output rail
 
 **Expected Response Headers:**
 ```
 x-scr-tier: MEDIUM
 x-scr-sensitivity: PUBLIC
-x-scr-routing-action: DIRECT_SAAS
+x-scr-routing-action: REDACT_THEN_SAAS
 x-scr-model: gemini-3.1-flash-preview
 x-scr-redaction-count: 0
 ```
@@ -56,14 +56,14 @@ x-scr-redaction-count: 0
   "event": "route",
   "complexity_tier": "MEDIUM",
   "sensitivity_level": "PUBLIC",
-  "routing_action": "DIRECT_SAAS",
+  "routing_action": "REDACT_THEN_SAAS",
   "target_model": "gemini-3.1-flash-preview",
   "redaction_count": 0,
   "egress_approved": true
 }
 ```
 
-**What This Proves:** Non-sensitive traffic is not affected by the privacy controls. No latency added, no content modified.
+**What This Proves:** All SaaS-bound traffic goes through redaction regardless of sensitivity level. The overhead for clean content is negligible (~8ms), and this eliminates the risk of a misclassified prompt leaking data.
 
 ---
 

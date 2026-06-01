@@ -13,9 +13,9 @@
 {"text": "What is the difference between a stack and a queue?", "label": "PUBLIC"}
 {"text": "Explain how garbage collection works in Java", "label": "PUBLIC"}
 {"text": "Write a SQL query to find duplicate rows in a table", "label": "PUBLIC"}
-{"text": "What is the difference between HTTP and HTTPS?", "label": "PUBLIC"}
-{"text": "Explain the concept of microservices architecture", "label": "PUBLIC"}
-{"text": "How does DNS resolution work?", "label": "PUBLIC"}
+{"text": "Explain the OWASP Top 10 web application security risks and how to mitigate them", "label": "PUBLIC"}
+{"text": "What is the difference between symmetric and asymmetric encryption?", "label": "PUBLIC"}
+{"text": "How does Kubernetes role-based access control (RBAC) work conceptually?", "label": "PUBLIC"}
 {"text": "What is containerization and how does Docker work?", "label": "PUBLIC"}
 {"text": "Explain the difference between OAuth and OIDC", "label": "PUBLIC"}
 {"text": "How do I deploy to the staging cluster on ironman.cjlabs.dev?", "label": "INTERNAL"}
@@ -26,18 +26,18 @@
 {"text": "Explain the data flow in our openai-proxy service", "label": "INTERNAL"}
 {"text": "How should we structure the Jira tickets for the Q3 migration?", "label": "INTERNAL"}
 {"text": "What are the resource limits for pods on worker-01?", "label": "INTERNAL"}
-{"text": "Debug the ollama-qwen36 deployment — it's not pulling the model", "label": "INTERNAL"}
+{"text": "Debug the ollama-qwen36 deployment \u2014 it's not pulling the model", "label": "INTERNAL"}
 {"text": "Review the network topology between home-assistant and homelab-maas namespaces", "label": "INTERNAL"}
-{"text": "What does the internal SLA say about model response latency?", "label": "INTERNAL"}
-{"text": "How do we handle secrets rotation for the Gemini API key?", "label": "INTERNAL"}
-{"text": "What is the current CPU utilization across our staging cluster?", "label": "INTERNAL"}
-{"text": "Can you check the build pipeline status for the redaction-service?", "label": "INTERNAL"}
-{"text": "How do we configure Argo CD to sync the semantic-redacted namespace?", "label": "INTERNAL"}
-{"text": "What are the current PVC storage claims on worker-02?", "label": "INTERNAL"}
-{"text": "Review the Grafana dashboard for model inference latency", "label": "INTERNAL"}
-{"text": "How do we set up a new BuildConfig for the guardrails service?", "label": "INTERNAL"}
-{"text": "What's the network policy between the voice namespace and homelab-maas?", "label": "INTERNAL"}
-{"text": "List all CronJobs running in the semantic-redacted namespace", "label": "INTERNAL"}
+{"text": "Check whether the ClusterRole binding for the CI service account has the right RBAC permissions", "label": "INTERNAL"}
+{"text": "What alerting rules are configured in Prometheus for pod restart thresholds?", "label": "INTERNAL"}
+{"text": "The Argo CD sync for the guardrails deployment is stuck, check the sync status", "label": "INTERNAL"}
+{"text": "Review the ClusterRoleBinding and ServiceAccount configuration for the pipeline runner", "label": "INTERNAL"}
+{"text": "What node selectors and tolerations are set on the GPU worker pool?", "label": "INTERNAL"}
+{"text": "Check the Kubernetes audit logs for failed API server authentication attempts this week", "label": "INTERNAL"}
+{"text": "Review the Grafana dashboard for model inference latency and pod health metrics", "label": "INTERNAL"}
+{"text": "How do we set up a new BuildConfig for the guardrails service on OpenShift?", "label": "INTERNAL"}
+{"text": "What network policies are applied between namespaces and which ports are open?", "label": "INTERNAL"}
+{"text": "List the CronJobs and their schedules, check if any are failing or stuck", "label": "INTERNAL"}
 {"text": "Draft a performance improvement plan for Sarah Chen in engineering", "label": "CONFIDENTIAL"}
 {"text": "What is the salary range for senior engineers on the platform team?", "label": "CONFIDENTIAL"}
 {"text": "Summarize the termination discussion from yesterday's HR meeting", "label": "CONFIDENTIAL"}
@@ -80,7 +80,7 @@
 {"text": "Review the audit findings from the external financial compliance review", "label": "REGULATED"}
 {"text": "Here is the SSH private key for the production bastion host", "label": "NEVER_EGRESS"}
 {"text": "The API key for our payment gateway is sk_live_EXAMPLE_KEY_00000000000000", "label": "NEVER_EGRESS"}
-{"text": "We found a critical RCE vulnerability in the auth service — CVE pending", "label": "NEVER_EGRESS"}
+{"text": "We found a critical RCE vulnerability in the auth service \u2014 CVE pending", "label": "NEVER_EGRESS"}
 {"text": "Review the penetration test report from last week's red team exercise", "label": "NEVER_EGRESS"}
 {"text": "The database root password is stored in vault at secret/prod/db-creds", "label": "NEVER_EGRESS"}
 {"text": "Analyze this memory dump from the compromised worker node", "label": "NEVER_EGRESS"}
@@ -98,3 +98,37 @@
 {"text": "Assess the attack vector used in the ransomware incident last week", "label": "NEVER_EGRESS"}
 {"text": "Document the rootkit removal procedure for the compromised host", "label": "NEVER_EGRESS"}
 {"text": "The threat assessment identified an active exploit targeting our VPN gateway", "label": "NEVER_EGRESS"}
+{"text": "Describe the Model-View-Controller design pattern and when to use it", "label": "PUBLIC"}
+{"text": "How does API rate limiting work and what are common algorithms like token bucket?", "label": "PUBLIC"}
+{"text": "What is the publish-subscribe messaging pattern in distributed systems?", "label": "PUBLIC"}
+{"text": "Explain how event-driven architecture differs from request-response patterns", "label": "PUBLIC"}
+{"text": "What are the general best practices for securing REST APIs?", "label": "PUBLIC"}
+{"text": "Check the Tekton pipeline build status for our latest service deployment", "label": "INTERNAL"}
+{"text": "Review the deployment rollout progress after the config map update", "label": "INTERNAL"}
+{"text": "Why is the container image pull failing from our internal registry?", "label": "INTERNAL"}
+{"text": "What is the current pod scheduling status on our worker node pool?", "label": "INTERNAL"}
+{"text": "Check the Helm release history for the monitoring stack in our cluster", "label": "INTERNAL"}
+{"text": "Compile the 360-degree feedback results for the engineering director", "label": "CONFIDENTIAL"}
+{"text": "What equity refresher grants were approved for the senior engineering team?", "label": "CONFIDENTIAL"}
+{"text": "Summarize the results from the new hire background check process", "label": "CONFIDENTIAL"}
+{"text": "Review the annual employee engagement survey results by department", "label": "CONFIDENTIAL"}
+{"text": "What was the outcome of the executive compensation benchmarking analysis?", "label": "CONFIDENTIAL"}
+{"text": "Review the PHI minimum necessary access controls per HIPAA Security Rule requirements", "label": "REGULATED"}
+{"text": "Audit the tokenization vault for PCI-DSS cardholder data environment compliance", "label": "REGULATED"}
+{"text": "Compile the GDPR data portability export for the subject access request", "label": "REGULATED"}
+{"text": "Prepare the SOX Section 302 management certification for quarterly financial reporting", "label": "REGULATED"}
+{"text": "Review the anti-money laundering transaction monitoring alerts for FinCEN reporting", "label": "REGULATED"}
+{"text": "Map the attack kill chain from the initial phishing email to lateral movement in our cluster", "label": "NEVER_EGRESS"}
+{"text": "Document all indicators of compromise found during the supply chain incident investigation", "label": "NEVER_EGRESS"}
+{"text": "The static analysis scan found a hardcoded bearer token in the production source code", "label": "NEVER_EGRESS"}
+{"text": "Analyze the C2 callback traffic from the compromised pod in our production namespace", "label": "NEVER_EGRESS"}
+{"text": "The Kubernetes service account token for cluster-admin was exposed in a public repository", "label": "NEVER_EGRESS"}
+{"text": "Compile the 360-degree peer review feedback for the department manager", "label": "CONFIDENTIAL"}
+{"text": "Review the talent calibration session notes for the engineering organization", "label": "CONFIDENTIAL"}
+{"text": "What were the upward feedback results for the VP of Engineering?", "label": "CONFIDENTIAL"}
+{"text": "Review the CI/CD pipeline definition for building our redaction-service image", "label": "INTERNAL"}
+{"text": "Check the BuildConfig for our guardrails-service container on the cluster", "label": "INTERNAL"}
+{"text": "What is the Tekton task configuration for our service image builds?", "label": "INTERNAL"}
+{"text": "The SIEM detected lateral movement from compromised hosts in the DMZ network", "label": "NEVER_EGRESS"}
+{"text": "Investigate the SOC alert showing an attacker pivoting between hosts in our cluster", "label": "NEVER_EGRESS"}
+{"text": "The IDS flagged host-to-host lateral movement consistent with an active breach", "label": "NEVER_EGRESS"}

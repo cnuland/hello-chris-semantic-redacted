@@ -664,20 +664,20 @@ def benchmark_egress_guard(warmup: int = 3) -> dict:
 
 E2E_SCENARIOS = [
     {
-        "name": "DIRECT_SAAS (PUBLIC)",
-        "path": "DIRECT_SAAS",
+        "name": "REDACT_THEN_SAAS (PUBLIC)",
+        "path": "REDACT_THEN_SAAS",
         "text": "What is the difference between REST and GraphQL?",
         "complexity": "SIMPLE",
     },
     {
-        "name": "DIRECT_SAAS (PUBLIC, COMPLEX)",
-        "path": "DIRECT_SAAS",
+        "name": "REDACT_THEN_SAAS (PUBLIC, COMPLEX)",
+        "path": "REDACT_THEN_SAAS",
         "text": "Explain the CAP theorem and its implications for distributed databases",
         "complexity": "COMPLEX",
     },
     {
-        "name": "DIRECT_SAAS (PUBLIC, MEDIUM)",
-        "path": "DIRECT_SAAS",
+        "name": "REDACT_THEN_SAAS (PUBLIC, MEDIUM)",
+        "path": "REDACT_THEN_SAAS",
         "text": "How does garbage collection work in modern JVMs?",
         "complexity": "MEDIUM",
     },
@@ -754,7 +754,7 @@ def benchmark_e2e() -> dict:
             continue
 
         sensitivity = classify_data.get("sensitivity_level", "PUBLIC")
-        routing_action = classify_data.get("routing_action", "DIRECT_SAAS")
+        routing_action = classify_data.get("routing_action", "REDACT_THEN_SAAS")
 
         if routing_action == "LOCAL_ONLY" or scenario["path"] == "LOCAL_ONLY":
             total_ms = (time.perf_counter() - total_start) * 1000
@@ -784,20 +784,6 @@ def benchmark_e2e() -> dict:
             steps.append({"step": "input_rails", "latency_ms": round(guard_ms, 2), "success": True})
         except Exception as e:
             steps.append({"step": "input_rails", "latency_ms": 0, "success": False, "error": str(e)})
-
-        if scenario["path"] == "DIRECT_SAAS":
-            total_ms = (time.perf_counter() - total_start) * 1000
-            results.append({
-                "scenario": scenario["name"],
-                "path": "DIRECT_SAAS",
-                "sensitivity": sensitivity,
-                "routing_action": routing_action,
-                "steps": steps,
-                "total_ms": round(total_ms, 2),
-                "success": True,
-            })
-            print(f"  {scenario['name']:40s} DIRECT_SAAS {total_ms:8.1f}ms")
-            continue
 
         # Step 3: Redact
         t0 = time.perf_counter()

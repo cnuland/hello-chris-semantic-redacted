@@ -12,7 +12,7 @@ Environment variables:
     GUARDRAILS_SERVICE_URL  (default: http://localhost:8001)
     LOCAL_MODEL_URL         (default: http://localhost:11434)
     SAAS_MODEL_URL          (default: http://localhost:8080)
-    GEMINI_API_KEY          (required for DIRECT_SAAS scenarios)
+    GEMINI_API_KEY          (required for SaaS-routed scenarios)
 """
 
 from __future__ import annotations
@@ -154,8 +154,6 @@ def _run_scenario_1_to_5(scenario: DemoScenario) -> dict[str, Any]:
         result = _execute_redact_then_saas(scenario, user_text, result)
     elif routing_action == "LOCAL_ONLY":
         result = _execute_local_only(scenario, user_text, result)
-    elif routing_action == "DIRECT_SAAS":
-        result = _execute_direct_saas(scenario, user_text, result)
     else:
         result["errors"].append(f"Unknown routing action: {routing_action}")
 
@@ -282,35 +280,6 @@ def _execute_local_only(
     except Exception as e:
         result["errors"].append(f"Local model error: {e}")
         result["response_preview"] = f"[Local model unavailable: {e}]"
-
-    return result
-
-
-def _execute_direct_saas(
-    scenario: DemoScenario, user_text: str, result: dict[str, Any]
-) -> dict[str, Any]:
-    """Send directly to SaaS model, no redaction."""
-    result["redaction_summary"] = {"entity_count": 0, "entities": []}
-
-    try:
-        llm_resp = _post(
-            f"{SAAS_MODEL_URL}/v1/chat/completions",
-            {
-                "model": scenario.expected_model,
-                "messages": [{"role": "user", "content": user_text}],
-            },
-            timeout=60,
-        )
-        response_text = (
-            llm_resp.get("choices", [{}])[0]
-            .get("message", {})
-            .get("content", "")
-        )
-        result["response_preview"] = response_text[:300]
-        print(f"  Response    : {response_text[:120]}...")
-    except Exception as e:
-        result["errors"].append(f"SaaS model error: {e}")
-        result["response_preview"] = f"[SaaS model unavailable: {e}]"
 
     return result
 

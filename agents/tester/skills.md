@@ -339,7 +339,7 @@ def test_scenario_4_sanitizable_query(router_client):
 @pytest.mark.e2e
 @pytest.mark.security
 def test_scenario_6_bypass_attempt():
-    """Scenario 6: Direct SaaS call from non-gateway pod is blocked."""
+    """Scenario 6: Unauthorized SaaS call from non-gateway pod is blocked."""
     result = subprocess.run(
         [
             "oc", "exec", "-n", "semantic-redacted",
